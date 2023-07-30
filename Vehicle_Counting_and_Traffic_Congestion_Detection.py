@@ -16,25 +16,12 @@ prob_min=0.5
 threshold=0.3
 colours=np.random.randint(0,255,size=(len(labels),3),dtype='uint8')
 classification=[0]*4
-frames_with_traffic=0
-lifes=0
-no_of_frames=0
+frames_with_traffic=lifes=no_of_frames=object_id=car_count=bike_count=bus_count=truck_count=start_time=end_time=total_time=counting_number_of_vehicles=no=id1=0
 center_points_prev_frame=[]
 tracking_objects={}
-object_id=0
-car_count=0
 TCD_using_tracking=[]
-bike_count=0
-bus_count=0
-truck_count=0
 count_list=[]
-start_time=0
-end_time=0
-id1=0
 max1=-200
-total_time=0
-counting_number_of_vehicles=0
-no=0
 flag2=False
 main=[]
 for_counting_unique_vehicles=[]
@@ -186,20 +173,7 @@ while True:
                     if max1<distance3:
                         max1=distance3
                         id1=val_list.index(i[0])
-            #print(id1)
-            
-        
-        '''print(for_counting_unique_vehicles)
-        print("\n",TCD_using_tracking)'''
-
-        #traffic congestion based on tracking ends here
-        #print(center_points_cur_frame)
-        #i=0
-        #print(tracking_objects,id)
-        '''for object_id,pt in tracking_objects.items():
-                main.append((id[i],object_id,pt))
-                i+=1
-            print(main)'''
+ 
     blank=np.zeros((500,500,3),dtype='uint8')
     cv.namedWindow('Count',cv.WINDOW_NORMAL)
     cv.putText(blank,'Number Of Cars: '+str(car_count),(30,30),cv.FONT_HERSHEY_TRIPLEX,1,(0,0,255),2)
@@ -210,58 +184,7 @@ while True:
     cv.imshow('count',blank)
     cv.namedWindow('frame',cv.WINDOW_NORMAL)                      
     cv.imshow('frame',frame)
-    #print(no_of_vehicles)
     center_points_prev_frame=center_points_cur_frame.copy()
-    #print(detectedObjects[0:4])
     if cv.waitKey(1) & 0xFF==ord('q'):
         break
-#print(no_of_frames//fps)
-#print(count_list)
-#print(no_of_frames)
-'''print(counting_number_of_vehicles)
-print((end_time-start_time)*no_of_frames)
-print((end_time-start_time))'''
 cv.destroyAllWindows()
-#print(len(count))
-'''cv.imshow('video',frame)
-    if cv.waitKey(20) & 0xFF==ord('q'):
-        break
-cv.destroyAllWindows()        
-
-for i in range(len(c))
-        if (c[i]<y+2 and c[i]>y-2):
-            if( id[i]==2):
-                classification[0]+=1
-                #print('car:',classification[0])
-            if( id[i]==3):
-                classification[1]+=1
-                #print('Motor Bike:',classification[1])
-            if( id[i]==5):
-                classification[2]+=1
-                #print('Bus:',classification[2])
-            if( id[i]==7):
-                classification[3]+=1
-                #print('Truck:',classification[3])
-            cv.line(frame,(0,frame.shape[0]-100),(frame.shape[1]-100,frame.shape[0]-100),(0,255,0),2)
-            #count.append("vehicle")
-            #print(count)'''
-
-
-'''  i=0
-        cv.line(frame,(0,y_c),(frame.shape[1],y_c),(0,0,255),2)
-        for object_id,pt in tracking_objects.items():
-            distance2=y_c-pt[1] 
-            if (distance2<6 and distance2>-6):
-                #print(distance2)
-                if(id[i]==2):
-                    car_id_set.add(object_id)
-                    print("no.of.cars",len(car_id_set))
-                if(id[i]==3):
-                    bike_id_set.add(object_id)
-                    print("no.of. bikes",len(bike_id_set))
-                if(id[i]==5):
-                    bus_id_set.add(object_id)
-                    print("no.of.buses",len(bus_id_set))
-                if(id[i]==7):
-                    truck_id_set.add(object_id)
-                    print("no.of.trucks",len(truck_id_set))'''
